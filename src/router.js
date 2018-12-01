@@ -18,11 +18,5 @@ export default new Router({
       name: 'about',
       component: () => import('./views/About.vue')
     },
-    {
-      path: '/play',
-      name: 'play',
-      component: () => import('./views/Game.vue')
-    }
-
   ]
 })

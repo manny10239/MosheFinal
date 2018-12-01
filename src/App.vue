@@ -21,14 +21,17 @@ export default {
 </script>
 
 <style>
-#logo{ height: 150px; }
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#logo{ 
+  height: 150px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  width: 15%;
+}
+
+#app{
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  
 }
 </style>

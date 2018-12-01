@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^3.3.7",
     "express": "^4.16.4",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.7",
