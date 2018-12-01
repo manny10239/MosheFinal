@@ -1,8 +1,8 @@
 <template>
   <div id="app" class = "container">
     <div class="display-3">
-      <img alt="Vue logo" src="./assets/logo.png">
-      SickFit
+      <img alt="Vue logo" src="./assets/logo.png" id = "logo">
+        <h1>SickFit</h1>
     </div>
     <Nav />
     <router-view/>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Nav from './components/Nav.vue'
+import Nav from '@/components/Nav.vue'
 
 export default {
   name: 'home',
@@ -21,6 +21,8 @@ export default {
 </script>
 
 <style>
+#logo{ height: 150px; }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
