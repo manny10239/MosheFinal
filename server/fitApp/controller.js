@@ -8,7 +8,7 @@ app.get("/", (req,res) => {
     res.send(fitapp);
 });
 // login a new user
-app.post('/users', (req,res) => {
+app.post('/register', (req,res) => {
     let user = fitapp.login(req.params.body, req.params.age);
     res.send(user);
 });

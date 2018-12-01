@@ -29,9 +29,7 @@ export default {
   margin-right:auto;
   width: 15%;
 }
-
 #app{
   text-align: center;
-  
 }
 </style>
