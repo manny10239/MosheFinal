@@ -63,7 +63,7 @@ export default {
                 MainUser: [],
                 
             },
-           active: false,
+           
         }
     },
     created(){
@@ -78,7 +78,7 @@ export default {
         },
         login(){
             api.Login(this.name, this.age)
-            this.active === true;
+            
             this.refresh()
         },
         profile(){

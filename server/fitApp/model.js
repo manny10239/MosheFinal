@@ -6,9 +6,7 @@ class FitnessApp{
         this.MainUser = [];
         this.users = [];
         this.workouts = workouts;
-        this.calB = 0;
-        this.calA = 0;
-        this.calD = 0;
+        
     }
 
 };
@@ -18,6 +16,9 @@ class User{
         this.name = name;
         this.age = age;
         this.friends = [];
+        this.calB = 0;
+        this.calA = 0;
+        this.calD = 0;
 
     }
 }

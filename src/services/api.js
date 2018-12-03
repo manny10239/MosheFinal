@@ -11,6 +11,9 @@ export function Login(name , age){
 export function Profile(){
     return myFetch(api_root+ '/profile',)
 }
+export function findFriend(name){
+    return myFetch(api_root+ '/addUser/'+ name)
+}
 
 
 function myFetch(url = ``, data = null) {
