@@ -1,48 +1,55 @@
 <template>
     <div class= "register"> 
         <h1>Register</h1>
-
+    <form id = "RegisterForm" @click.prevent>
         <input 
-            type="name"
-            name="name"
+            type="text"
             v-model="name"
             placeholder="name" />
         <br>
         <br>
         <input
-            type="age"
-            name="age"
+            type= "number"
             v-model="age"
             placeholder="age" />
         <br>
         <br>
-        <button @Click ="register">
+        <button @click.prevent ="login()">
             Submit
         </button>
+    </form>
 
     </div>
     
 </template>
 
 <script>
-import Authentication from '@/services/Authentication'
+import * as api from '@/services/api';
 
 export default {
     data(){
         return{
-            name:'',
-            age: ''
+            state:{
+                users: []
+            }
         }
     },
+    created(){
+        this.refresh()
+    },
+    
     methods: {
-    async register(){
-           const response = await Authentication.register({
-                name: this.name,
-                age: this.age
-            })
-            console.log(response.data);
+
+        refresh(){
+            api.GetState()
+            .then(x => this.state = x)
+        },
+        login(){
+            api.Login(this.name, this.age)
+            
         }
-    }
+    
+    },
 }
 </script>
 

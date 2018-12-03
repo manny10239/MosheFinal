@@ -17,7 +17,6 @@ app.use("/", express.static(__dirname + "/../dist/"));
 
 app.use(express.urlencoded({extended: true}));
 app.use('/fitapp', fitapp);
-app.use("/", (req, res) => res.sendFile(path.join(__dirname, "/../dist/index.html")) );
 
 app.listen(port);
 console.log(`Listening on: http://${server}:${port}`);

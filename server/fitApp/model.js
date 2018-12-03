@@ -7,15 +7,10 @@ class FitnessApp{
         this.workouts = workouts;
     }
 
-    login(name,age){
-        let user = new User(name.age);
-        this.users.push(user);
-        return user;
-    }
-}
+};
 
-class User {
-    contructor(name, age){
+class User{
+    constructor (name,age){
         this.name = name;
         this.age = age;
     }
