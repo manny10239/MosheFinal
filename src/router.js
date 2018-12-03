@@ -24,5 +24,10 @@ export default new Router({
       name: 'profile',
       component: Profile
     },
+    {
+      path: '/profile/:id',
+      name: 'Profile',
+      component:Profile
+    }
   ]
 })

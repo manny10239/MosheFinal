@@ -3,36 +3,39 @@
         <h1 class="profile">Profile</h1>
 
         <div v-bind="Profile()" class="MainUser">
+            <h1>
+                 Welcome {{state.MainUser[0].name}}  
+            </h1>
+            <br>
+
             <h2>
-                <i> Welcome {{state.MainUser[0].name}}  </i>
+                  Age {{state.MainUser[0].age}} 
+            </h2> 
+            <br>
+
+            <h2>
+                 Burned Calories  {{state.MainUser[0].Bcal}}  
+            </h2> 
+            <br>
+
+            <h2>
+                Calorie Intake  {{state.MainUser[0].Ical}}  
+            </h2> 
+            <br>
+
+            <h2>
+                 Caloric Deficit  {{state.MainUser[0].calDef}}  
+            </h2> 
+            <br>
+
+            <h2>
+                Friends  {{state.MainUser[0].friends.length}} 
+            </h2> 
+            <br>
+
+            <h2>
+                Workouts Completed  {{state.MainUser[0].workDone.length}} 
             </h2>
-            <br>
-
-            <h2>
-                 <i> Age {{state.MainUser[0].age}}  </i>
-            </h2> 
-
-            <br>
-
-            <h2>
-                <i> Burned Calories  {{state.MainUser[0].calB}}  </i>
-            </h2> 
-
-            <br>
-
-            <h2>
-                <i> Calorie Intake  {{state.MainUser[0].calA}}  </i>
-            </h2> 
-
-            <br>
-
-            <h2>
-                <i> Caloric Deficit  {{state.MainUser[0].calD}}  </i>
-            </h2> 
-            <br>
-            <h2>
-                <i> Friends  {{state.MainUser[0].friends.length}}  </i>
-            </h2> 
 
             <ul class="navbar-nav">
                 <li><a href="">Edit</a></li>
@@ -40,47 +43,72 @@
         </div>
 
         <div class="Find">
-            <h1> Add Friend</h1>
-
-            <input 
-            type="text"
-            v-model="name"
-            placeholder="Search Friend Name" />
-            <br>
-
-            <button @click.prevent ="AddUser()">
-                Find
+            <h1>Workouts</h1>
+            <button @click.prevent="addWorkout1()">
+                {{state.workouts[0]}}
             </button>
-
-            <div v-for="p in state.MainUser[0].friends" :key="p.name">
-            <h2>
-            <i> Welcome {{state.MainUser[0].friends.name}} </i>
-            </h2> 
-            </div>
-            
+            <br>
+            <br>
+            <button @click.prevent="addWorkout2()">
+                {{state.workouts[1]}}
+            </button>
+            <br>
+            <br>
+            <button @click.prevent="addWorkout3()">
+                {{state.workouts[2]}}
+            </button>
+            <br>
+            <br>
+            <button @click.prevent="addWorkout4()">
+                {{state.workouts[3]}}
+            </button>
+            <br>
+            <br>
+            <button @click.prevent="addWorkout5()">
+                {{state.workouts[4]}}
+            </button>
         </div>
 
-    
-    
-    
+        <div>
+            <h1>Caloric Intake</h1>
+            <input 
+                type="text"
+                v-model="food"
+                placeholder="Food" />
+            <br>
+            <button @click.prevent="caloricIntake()" type="submit">
+                Submit
+            </button>
+        </div>
+               
+        </div>
+
+            
+        
     </div>
     
 </template>
 
 <script>
 import * as api from '@/services/api';
+let loopTimer = null;
 
 export default {
     data(){
         return{
-            state:{
-                name : this.name,
-                MainUser : this.MainUser
-            }
+             state:{
+                MainUser : [],
+                users : [],
+                filterUser : [],
+                id: '',
+                workouts:[]
+            },
+            food:''
         }
         
     },
     created(){
+       loopTimer = setInterval(this.refresh, 1000)
        this.refresh()
     },
     
@@ -92,9 +120,44 @@ export default {
         },
         Profile(){
             api.Profile()
+            this.refresh
         },
-        AddUser(){
-            api.findFriend(this.name)
+        addUser(){
+            api.findFriend(this.ID)
+            .then(x => this.state = x)
+            this.refresh()
+        },
+        addWorkout1(){
+            api.workDone(0)
+            this.burned()
+        }, 
+        addWorkout2(){
+            api.workDone(1)
+            this.burned()
+        },
+        addWorkout3(){
+            api.workDone(2)
+            this.burned()
+        }, 
+        addWorkout4(){
+            api.workDone(3)
+            this.burned()
+        },
+        addWorkout5(){
+            api.workDone(4)
+            this.burned()
+        },
+        burned (){
+            api.calBurn()
+            this.refresh()
+        },
+        caloricIntake(){
+            api.intake(this.food)
+            this.calDef()
+            this.refresh()
+        },
+        calDef(){
+            api.deficit()
             this.refresh()
         }
     },

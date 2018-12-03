@@ -26,22 +26,23 @@
 
     <div class="container-2">
         <h1>Main User</h1>
-        <div v-for="p in state.MainUser" :key="p.name">
+         <div v-for="p in state.MainUser" >
             <h2>
-            <i> Welcome {{state.MainUser[0].name}} </i>
+            <i> Welcome {{p.name}} </i>
             </h2> 
-            
-             <ul class="navbar-nav">
+         </div>
+
+        <ul class="navbar-nav">
             <li><a href="/profile">Profile</a></li>
         </ul>
-        </div>
+       
     </div>
 
     <div class="container-3">
         <h1> All Users</h1>
-        <div v-for="p in state.users" :key="p.name">
+        <div v-for="p in state.users" >
             <h2>
-            <i> Welcome {{state.users[0].name}} </i>
+            <i> {{p.name}} </i>
             </h2> 
         </div>
     </div>
@@ -53,21 +54,21 @@
 
 <script>
 import * as api from '@/services/api';
-
+let loopTimer = null;
 export default {
     data(){
         return{
             state:{
-                name:'',
-                users: [],
-                MainUser: [],
+                MainUser : [],
+                users : [],
+                filterUser : [],
                 
             },
            
         }
     },
     created(){
-        this.refresh()
+        loopTimer = setInterval(this.refresh, 1000)
     },
     
     methods: {
@@ -78,7 +79,6 @@ export default {
         },
         login(){
             api.Login(this.name, this.age)
-            
             this.refresh()
         },
         profile(){
@@ -89,7 +89,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+
+
 .home{
     display: grid;
     grid-area: home;
