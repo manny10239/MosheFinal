@@ -59,7 +59,7 @@ app.get('/profile/:id', (req,res) => {
 
 // add a friend
 app.get('/addFriend/:name', (req,res) =>{
-    const mainUser = fitapp.users.find(c => c.id ===1);
+    const mainUser = fitapp.MainUser.find(c => c.id ===1);
     const friend = fitapp.users.find(c => c.name === String(req.params.name));
     if(!friend){
         res.status(400).send('User not Found');
@@ -114,7 +114,7 @@ app.get('/users/stats', (req, res) => {
 });
 
 // friend list stats
-app.get('/user/friendsStat', (req, res) => {
+app.get('/friendsStat', (req, res) => {
     const mainUser = fitapp.users.find(c => c.id === 1);
     res.send(mainUser.friends);
 });

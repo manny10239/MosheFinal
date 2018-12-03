@@ -8,34 +8,33 @@
             </h1>
             <br>
 
-            <h2>
+            <h3>
                   Age {{state.MainUser[0].age}} 
-            </h2> 
+            </h3> 
             <br>
 
-            <h2>
+            <h3>
                  Burned Calories  {{state.MainUser[0].Bcal}}  
-            </h2> 
+            </h3> 
             <br>
 
-            <h2>
+            <h3>
                 Calorie Intake  {{state.MainUser[0].Ical}}  
-            </h2> 
+            </h3> 
             <br>
-
-            <h2>
+            <h3>
                  Caloric Deficit  {{state.MainUser[0].calDef}}  
-            </h2> 
+            </h3> 
             <br>
 
-            <h2>
+            <h3>
                 Friends  {{state.MainUser[0].friends.length}} 
-            </h2> 
+            </h3> 
             <br>
 
-            <h2>
+            <h3>
                 Workouts Completed  {{state.MainUser[0].workDone.length}} 
-            </h2>
+            </h3>
 
             <ul class="navbar-nav">
                 <li><a href="">Edit</a></li>
@@ -80,6 +79,30 @@
                 Submit
             </button>
         </div>
+
+        <div>
+            <h1> Add Friend Id</h1>
+            <input 
+                type="number"
+                v-model="findId"
+                placeholder="Find Friend with Id" >
+                <br>
+                <button @click.prevent="addUser()" type="submit">
+                    FindFriend
+                </button>   
+        </div>
+
+        <div>
+            <h1> Find Friend Name</h1>
+            <input 
+                type="text"
+                v-model="findName"
+                placeholder="Find Friend with Name" >
+                <br>
+                <button @click.prevent="addFriendName()" type="submit">
+                    Find Friend
+                </button>   
+        </div>
                
         </div>
 
@@ -103,7 +126,9 @@ export default {
                 id: '',
                 workouts:[]
             },
-            food:''
+            food:'',
+            findId:0,
+            findName:''
         }
         
     },
@@ -122,9 +147,14 @@ export default {
             api.Profile()
             this.refresh
         },
-        addUser(){
-            api.findFriend(this.ID)
-            .then(x => this.state = x)
+        addFriendName(){
+            api.addName(this.findName)
+            this.Profile()
+            this.refresh()
+        },
+        addUserId(){
+            api.findFriend(this.findId)
+            this.Profile()
             this.refresh()
         },
         addWorkout1(){

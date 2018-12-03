@@ -12,7 +12,7 @@ export function Profile(){
     return myFetch(api_root+ '/profile',)
 }
 export function findFriend(id){
-    return myFetch(api_root+ `/profile/,${id}`)
+    return myFetch(api_root+`/profile/${id}`)
 }
 export function workDone(id){
     return myFetch(api_root+`/workoutDone/${id}`)
@@ -28,6 +28,10 @@ export function intake(food){
 export function deficit(){
     return myFetch(api_root+"/caloricDeficit",)
 }
+export function addName(name){
+    return myFetch(api_root+`/addFriend/${name}`)
+}
+
 function myFetch(url = ``, data = null) {
     let options = {
           cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
