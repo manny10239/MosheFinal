@@ -14,11 +14,20 @@
             placeholder="age" />
         <br>
         <br>
-        <button @click.prevent ="login()">
+       
+        <button  @click.prevent ="login()" >
             Submit
         </button>
+      
+        <br>
     </form>
 
+    <div>
+        <h2>
+        <i > Welcome {{state.MainUser[0].name}} </i>
+        </h2> 
+        <button @click.prevent="" >Get Started</button>
+    </div>
     </div>
     
 </template>
@@ -30,8 +39,12 @@ export default {
     data(){
         return{
             state:{
-                users: []
+                name:'',
+                users: [],
+                MainUser: [],
+                isActive: false
             }
+           
         }
     },
     created(){
@@ -46,9 +59,8 @@ export default {
         },
         login(){
             api.Login(this.name, this.age)
-            
+            this.refresh()
         }
-    
     },
 }
 </script>

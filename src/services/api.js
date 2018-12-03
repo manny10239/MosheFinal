@@ -1,13 +1,17 @@
 const api_root = "http://localhost:3000/fitapp";
 
 
- export function GetState(){
+export function GetState(){
     return myFetch(api_root + "/");
 }
 
 export function Login(name , age){
-    return myFetch(api_root+ '/register', {name, age})
+    return myFetch(api_root+ '/', {name, age})
 }
+export function Profile(){
+    return myFetch(api_root+ '/profile',)
+}
+
 
 function myFetch(url = ``, data = null) {
     let options = {
