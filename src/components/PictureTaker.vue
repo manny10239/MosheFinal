@@ -20,11 +20,11 @@ export default {
         capture(){
             const width = this.canvas.width = this.video.videoWidth;
             const height = this.canvas.height = this.video.videoHeight;
-             this.context2d.drawImage(this.video, 0, 0, width, height);
+            this.context2d.drawImage(this.video, 0, 0, width, height);
             this.captures.push({
                 id: this.captures.length,
                 picture: this.canvas.toDataURL("image/png")
-            });
+            });   
         }
     },
     mounted(){
@@ -42,7 +42,9 @@ export default {
     }
 }
 </script>
-
+#canvas{
+    display:none
+}
 <style>
 
 </style>

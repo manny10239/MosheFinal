@@ -1,7 +1,7 @@
 <template>
   <div id="app" class = "container">
     <div class="display-3">
-      <img alt="Vue logo" src="./assets/logo.png" id = "logo">
+      <img alt="sickfit logo" src="./assets/logo.png" id = "logo">
         <h1>SickFit</h1>
     </div>
     <Nav />

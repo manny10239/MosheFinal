@@ -31,7 +31,10 @@ export function deficit(){
 export function addName(name){
     return myFetch(api_root+`/addFriend/${name}`)
 }
+export function getFriends(){
+    return myFetch(api_root+'/friends',)
 
+}
 function myFetch(url = ``, data = null) {
     let options = {
           cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

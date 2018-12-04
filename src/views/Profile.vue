@@ -2,70 +2,85 @@
     <div class= "Profile"> 
         <h1 class="profile">Profile</h1>
 
+        <div class="home">
         <div v-bind="Profile()" class="MainUser">
-            <h1>
-                 Welcome {{state.MainUser[0].name}}  
+
+            <h1 class="wel">
+                 Sick Fit {{state.MainUser[0].name}}  
             </h1>
             <br>
+
+            <div class="friendsList">
+                <h1>Friends List</h1>
+                <div v-for="p in state.MainUser[0].friends">
+                    <h4>
+                    <li>
+                        <a href="/about"> {{p.name }}  {{p.age}}  ID: {{p.id}}</a>
+                    </li>
+                    </h4>
+                </div>
+            </div>
              
             <h3>
-                  Age {{state.MainUser[0].age}} 
+                  Age : {{state.MainUser[0].age}} 
             </h3> 
             <br>
             <h3>
-                 Burned Calories  {{state.MainUser[0].Bcal}}  
+                 Burned Calories : {{state.MainUser[0].Bcal}}  
             </h3> 
             <br>
             <h3>
-                Calorie Intake  {{state.MainUser[0].Ical}}  
+                Calorie Intake : {{state.MainUser[0].Ical}}  
             </h3> 
             <br>
             <h3>
-                 Caloric Deficit  {{state.MainUser[0].calDef}}  
+                 Caloric Deficit : {{state.MainUser[0].calDef}}  
             </h3> 
             <br>
             <h3>
-                Friends  {{state.MainUser[0].friends.length}} 
+                Friends : {{state.MainUser[0].friends.length}} 
             </h3> 
             <br>
             <h3>
-                Workouts Completed  {{state.MainUser[0].workDone.length}} 
+                Workouts Completed : {{state.MainUser[0].workDone.length}} 
             </h3>
+
+            
 
             <ul class="navbar-nav">
                 <li><a href="">Edit</a></li>
             </ul>
         </div>
-
-        <div class="Find">
-            <h1>Workouts</h1>
-            <button @click.prevent="addWorkout1()">
+          
+        <div class="Workout">
+            <h1 class="work">Workouts</h1>
+            <button @click.prevent="addWorkout1()" class="btn">
                 {{state.workouts[0]}}
             </button>
             <br>
             <br>
-            <button @click.prevent="addWorkout2()">
+            <button @click.prevent="addWorkout2()" class="btn">
                 {{state.workouts[1]}}
             </button>
             <br>
             <br>
-            <button @click.prevent="addWorkout3()">
+            <button @click.prevent="addWorkout3()" class="btn">
                 {{state.workouts[2]}}
             </button>
             <br>
             <br>
-            <button @click.prevent="addWorkout4()">
+            <button @click.prevent="addWorkout4()" class="btn">
                 {{state.workouts[3]}}
             </button>
             <br>
             <br>
-            <button @click.prevent="addWorkout5()">
+            <button @click.prevent="addWorkout5()" class="btn">
                 {{state.workouts[4]}}
             </button>
         </div>
 
-        <div>
-            <h1>Caloric Intake</h1>
+        <div class="caloric">
+            <h1 class="calI">Caloric Intake</h1>
             <input 
                 type="text"
                 v-model="food"
@@ -76,20 +91,20 @@
             </button>
         </div>
 
-        <div>
-            <h1> Add Friend Id</h1>
+        <div class="idFriend">
+            <h1 class="addId"> Add Friend Id</h1>
             <input 
                 type="number"
                 v-model="findId"
                 placeholder="Find Friend with Id" >
                 <br>
-                <button @click.prevent="addUserId()" type="submit">
+                <button class="btnn" @click.prevent="addUserId()" type="submit">
                     FindFriend
                 </button>   
         </div>
 
-        <div>
-            <h1> Add Friend Name</h1>
+        <div class="FindFriend">
+            <h1 class="nameFriend"> Add Friend Name</h1>
             <input 
                 type="text"
                 v-model="findName"
@@ -99,12 +114,17 @@
                     Find Friend
                 </button>   
         </div>
-               
+
+        <div class="container-5">
+        <img alt="SickFit logo" src="@/assets/logo.png" id = "logo">
         </div>
 
+       
+</div>
+</div> 
             
         
-    </div>
+    
     
 </template>
 
@@ -185,41 +205,60 @@ export default {
         calDef(){
             api.deficit()
             this.refresh()
+        },
+        friendsList(){
+            api.getFriends()
+            this.fresh()
         }
     },
 }
 </script>
 
 <style>
-.Profile{
-    display: grid;
-    grid-template-areas:
-    'profile profile profile profile'
-    'main main findFriend findFriend'
-}
 
-.profile{    
-    grid-area: profile;
-    color: white;
-    background-color: black;
+.home{
+    display: grid;
+    grid-area: home;
+    grid-template-areas: 
+    ' main  main  main'
+    '. logo .'
+    'workout intake intake'
+    'name name Id'
+    
+    
+    
+}
+.profile{  
+    background-color:white;
+    border: 2px solid black;
+    padding:10px;
+    text-align: center;
+    grid-area: pro;
+   
 }
 
 .MainUser{
     grid-area: main;
-    background-color: aqua;
+    background-color:black;
+    color:white;
 }
-.Find{
-    grid-area: findFriend;
+.Workout{
+    grid-area: workout;
     background-color:red;
 }
-
+.work{
+    border: 2px solid black;
+    padding: 10px;
+}
 
 .navbar-nav{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color:aqua;
+    background-color:black;
+    color: white;
+    
 }
 .navbar-nav1{
     list-style-type: none;
@@ -233,14 +272,13 @@ li{
     display:inline-block;
     margin:10px 20px;
 }
-
 li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    border: 1px solid black;
+    border: 2px dashed white;
     background-color: black;
 }
 li a:hover {
@@ -248,6 +286,83 @@ li a:hover {
     color: black;
 }
 
+.btn{
+    background-color:black; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    
+}
+*{
+    margin:5px;
+}
+.wel{
+    padding: 10px;
+    border: 2px solid white;
+}
+.caloric{
+    grid-area: intake;
+    background-color:red;
 
+}
+.calI{
+    border: 2px solid black;
+    padding:10px;
+}
+button{
+    background-color:black; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+}
+.btnn{
+    background-color:white; /* Green */
+    border: none;
+    color:black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+}
+.idFriend{
+    background-color: black;
+    grid-area:Id;
+}
+.addId{
+    border: 2px solid white;
+    padding:10px;
+    color: white;
+}
+.FindFriend{
+    grid-area: name;
+    background-color:red;
+}
+.nameFriend{
+    border: 2px solid black;
+    padding:10px;
+    color: black;
+}
+.container-5{
+    grid-area: logo;
+    min-height: 200px;
+    min-width: 20%;
+}
+h3{
+    text-align: left;
+    padding-left: 25px;
+}
+.friendsList{
+    text-align: right;
+    padding-right: 60px;
+}
 
 </style>

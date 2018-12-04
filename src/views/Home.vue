@@ -20,8 +20,8 @@
         <button  @click.prevent ="login()" >
             Submit
         </button>
-      
         <br>
+       
     </form>
 
     <div class="container-2">
@@ -30,7 +30,7 @@
             <h2>
             <i> Welcome {{p.name}} 
                 <br>
-                Age: {{p.age}}  ID:{{p.id}}</i>
+                Age: {{p.age}} <br> ID:{{p.id}}</i>
             </h2> 
          </div>
 
@@ -65,8 +65,14 @@
             enviroment but please dont be shy <br>
             to add friends once 
             you register. Dont forget to set up <br>
-            you profile picture</strong></p>
+            you profile picture just click edit profile
+            once youre logged in</strong></p>
     </div>
+
+    <div class="container-5">
+        <img alt="SickFit logo" src="@/assets/logo.png" id = "logo">
+    </div>
+
     </div>
 
     </div>
@@ -106,9 +112,6 @@ export default {
         profile(){
             api.Profile()
             this.refresh()
-        },
-        takePicture(){
-            <picture-taker></picture-taker> 
         }
     },
 }
@@ -130,9 +133,10 @@ p{
 
     grid-template-areas: 
     'home home home home '
-    ' login login sickfit sickfit '
-    ' login login sickfit sickfit'
-    'mainUser mainUser allUser allUser'
+    'sickfit sickfit sickfit sickfit'
+    '. logo logo .'
+    'mainUser login login allUser'
+    
 }
 .container-4{
     background-color: red;
@@ -145,6 +149,7 @@ p{
     color:white;
    
     grid-area: login;
+    min-height: 400px;
 }
 .container-2{
     background-color:red;
@@ -152,18 +157,28 @@ p{
     grid-area: mainUser;
 }
 .container-3{
-    background-color:black;
-    color:white;
+    background-color:red;
+    color:;
    
     grid-area: allUser;
 }
-
+.container-5{
+    grid-area: logo;
+    min-height: 300px;
+}
 ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color:red;
+}
+#logo{ 
+  height: 200px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  width: 20%;
 }
 
 li{
@@ -187,6 +202,7 @@ li a:hover {
 }
 h1{
     border: 2px solid black;
+    padding:10px;
 }
 
 
