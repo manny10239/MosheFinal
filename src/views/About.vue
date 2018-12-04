@@ -21,15 +21,7 @@
             </div>
         </div>
         
-        <div>
-            <input
-                type= "number"
-                v-model="weight"
-                placeholder="weight"
-            />
-            <button @click.prevent = "BMI()" type="submit"> Submit</button>
-            
-        </div>
+        
    
 </div>
  
