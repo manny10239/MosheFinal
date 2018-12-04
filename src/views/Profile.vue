@@ -9,18 +9,7 @@
                  Sick Fit {{state.MainUser[0].name}}  
             </h1>
             <br>
-
-            <div class="friendsList">
-                <h1>Friends List</h1>
-                <div v-for="p in state.MainUser[0].friends">
-                    <h4>
-                    <li>
-                        <a href="/about"> {{p.name }}  {{p.age}}  ID: {{p.id}}</a>
-                    </li>
-                    </h4>
-                </div>
-            </div>
-             
+            <div class="user">
             <h3>
                   Age : {{state.MainUser[0].age}} 
             </h3> 
@@ -43,13 +32,23 @@
             <br>
             <h3>
                 Workouts Completed : {{state.MainUser[0].workDone.length}} 
+            <br>
+           
             </h3>
+            </div>
 
+            <div class="friendsList">
+                <h1>Friends List</h1>
+                <div v-for="p in state.MainUser[0].friends">
+                    <h4>
+                    <li>
+                        <a href="/about"> {{p.name }}  {{p.age}}  ID: {{p.id}}</a>
+                    </li>
+                    </h4>
+                </div>
+            </div>
             
 
-            <ul class="navbar-nav">
-                <li><a href="">Edit</a></li>
-            </ul>
         </div>
           
         <div class="Workout">
@@ -89,6 +88,7 @@
             <button @click.prevent="caloricIntake()" type="submit">
                 Submit
             </button>
+
         </div>
 
         <div class="idFriend">
@@ -140,11 +140,15 @@ export default {
                 users : [],
                 filterUser : [],
                 id: '',
-                workouts:[]
+                workouts:[],
+                intake: []
+               
+                
             },
             food:'',
             findId:0,
-            findName:''
+            findName:'',
+            
         }
         
     },
@@ -161,6 +165,7 @@ export default {
         },
         Profile(){
             api.Profile()
+            this.calDef()
             this.refresh
         },
         addFriendName(){
@@ -253,12 +258,10 @@ export default {
 
 .navbar-nav{
     list-style-type: none;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
     background-color:black;
     color: white;
-    
+    float: none;
 }
 .navbar-nav1{
     list-style-type: none;
@@ -360,9 +363,14 @@ h3{
     text-align: left;
     padding-left: 25px;
 }
+.user{
+    float: left;
+}
 .friendsList{
     text-align: right;
-    padding-right: 60px;
+    padding-right: 30px;
+    margin-top:20px;
+    
 }
 
 </style>

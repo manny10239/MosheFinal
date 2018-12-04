@@ -6,7 +6,6 @@ const app = express.Router();
 
 app.get("/", (req, res) => {
     res.send(fitapp);
-    
 });
 
 //makes a user
@@ -20,7 +19,8 @@ app.post('/users', (req , res) => {
         calDef: 0,
         friends: [],
         workDone: [],
-        intake:[]
+        intake:[],
+      
     };
      const filuser = {
          name: req.body.name,
@@ -34,6 +34,7 @@ app.post('/users', (req , res) => {
     fitapp.users.push(user);
     res.send(filuser);
 });
+
 //get main user 
 app.get('/profile', (req,res) => {
     const mainUser = fitapp.MainUser[0];
@@ -57,11 +58,25 @@ app.get('/profile/:id', (req,res) => {
     res.send(fitapp.MainUser);
 });
 
+// get friend info by ID
+app.get('/friend/:id', (req, res) => {
+    const mainUser = fitapp.MainUser.find(c => c.id === 1);
+    const friend = mainUser.friends.find(c => c.id == req.params.id);
+
+    if(!friend){
+        res.status(404).send('The user with given id not found');
+    }
+    else{
+        res.send(friend);
+    }
+
+})
+
 // add a friend
 app.get('/addFriend/:name', (req,res) =>{
     const mainUser = fitapp.MainUser.find(c => c.id ===1);
     const friend = fitapp.users.find(c => c.name === String(req.params.name));
-    if(!friend){
+    if(!friend || mainUser.friends.find( c => c.name === String(friend.name ))){
         res.status(400).send('User not Found');
     }
     else{
@@ -116,7 +131,7 @@ app.get('/users/stats', (req, res) => {
 });
 
 // friend list stats
-app.get('/friendsStat', (req, res) => {
+app.get('/friends', (req, res) => {
     const mainUser = fitapp.users.find(c => c.id === 1);
     res.send(mainUser.friends);
 });
