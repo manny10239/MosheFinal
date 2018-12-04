@@ -31,7 +31,7 @@ li a {
     border: 1px solid black;
 }
 li a:hover {
-    background-color:black;
+    background-color:white;
 }
 
 

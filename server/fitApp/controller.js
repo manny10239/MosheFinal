@@ -64,7 +64,9 @@ app.get('/addFriend/:name', (req,res) =>{
     if(!friend){
         res.status(400).send('User not Found');
     }
-    mainUser.friends.push(friend)
+    else{
+     mainUser.friends.push(friend)
+    }
     res.send(mainUser);
 
 });

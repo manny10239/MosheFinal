@@ -7,17 +7,15 @@
                  Welcome {{state.MainUser[0].name}}  
             </h1>
             <br>
-
+             
             <h3>
                   Age {{state.MainUser[0].age}} 
             </h3> 
             <br>
-
             <h3>
                  Burned Calories  {{state.MainUser[0].Bcal}}  
             </h3> 
             <br>
-
             <h3>
                 Calorie Intake  {{state.MainUser[0].Ical}}  
             </h3> 
@@ -26,12 +24,10 @@
                  Caloric Deficit  {{state.MainUser[0].calDef}}  
             </h3> 
             <br>
-
             <h3>
                 Friends  {{state.MainUser[0].friends.length}} 
             </h3> 
             <br>
-
             <h3>
                 Workouts Completed  {{state.MainUser[0].workDone.length}} 
             </h3>
@@ -87,13 +83,13 @@
                 v-model="findId"
                 placeholder="Find Friend with Id" >
                 <br>
-                <button @click.prevent="addUser()" type="submit">
+                <button @click.prevent="addUserId()" type="submit">
                     FindFriend
                 </button>   
         </div>
 
         <div>
-            <h1> Find Friend Name</h1>
+            <h1> Add Friend Name</h1>
             <input 
                 type="text"
                 v-model="findName"
