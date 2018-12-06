@@ -4,23 +4,20 @@ const api_root = "http://localhost:3000/fitapp";
 export function GetState(){
     return myFetch(api_root + "/");
 }
-export function Login(name , age){
-    return myFetch(api_root+ '/users', {name, age})
+export function Login(name , age , height , weight){
+    return myFetch(api_root+ '/users', {name, age, height, weight})
 }
 export function Profile(){
     return myFetch(api_root+ '/profile',)
 }
-export function findFriend(id){
-    return myFetch(api_root+`/profile/${id}`)
-}
-export function workDone(id){
-    return myFetch(api_root+`/workoutDone/${id}`)
+export function workDone(workId){
+    return myFetch(api_root+`/Workout/${workId}`)
 }
 export function calBurn(){
     return myFetch(api_root+"/caloriesBurned",)
 }
-export function intake(food){
-    return myFetch(api_root+"/nutrition", {food})
+export function calIntake(food){
+    return myFetch(api_root+`/calIntake/${food}`)
 }
 export function deficit(){
     return myFetch(api_root+"/caloricDeficit",)

@@ -10,9 +10,11 @@
                    <div class="fcontainer">  
                     <h4>
                         Age : {{p.age}} <br>
-                        Burned Calories : {{p.Bcal}} <br>
-                        Calorie Intake : {{p.Ical}} <br>
-                        Caloric Deficit : {{p.calDef}} <br>
+                        Height: {{p.height}}<br>
+                        Weight: {{p.weight}}<br>
+                        Burned Calories : {{p.calB}} <br>
+                        Calorie Intake : {{p.calI}} <br>
+                        Caloric Deficit : {{p.calD}} <br>
                         Friends : {{p.friends.length}} <br>
                         WorkOut Completed : {{p.workDone.length}} <br>
                     </h4>
@@ -20,6 +22,29 @@
                 </div>
             </div>
         </div>
+
+         <div class="container-1">
+             <h1> {{state.MainUser[0].name}}'s Intake Data </h1>
+            <div class="container-2">
+                <h4>
+                    <i v-for="p in state.MainUser[0].intake" :key="p.food" >
+                        {{p}} <br>
+                    </i>
+                </h4>
+            </div>
+        </div>
+
+       <div class="container-3">
+             <h1> {{state.MainUser[0].name}}'s Workout History </h1>
+            <div class="container-4">
+                <h4>
+                    <i v-for="p in state.MainUser[0].workDone" :key="p.text" >
+                        {{p}} <br>
+                    </i>
+                </h4>
+            </div>
+        </div>
+        
         
         
    
@@ -66,25 +91,53 @@ export default {
             api.Profile()
             this.refresh
         },
-        BMI(){
-            
-        }
+        
     }
 }
 </script>
 
 <style>
+.container-3{
+    background-color: red;
+    color: black;
+    float: right;
+    width: 50%;
+}
+.container-3 h1{
+    border: 2px solid black;
+}
+.container-4{
+    text-align: left;
+    padding: 20px;
+}
 
-
+.container-1{
+    background-color: black;
+    color: white;
+    float: left;
+    width: 48%;
+}
+.container-1 h1{
+    border: 2px solid white;
+    padding: 20 px;
+}
+.container-2{
+    text-align: left;
+    padding: 10px;
+}
 .List h1{
     border: 2px solid black;
 }
 .List{
     color: black;
     background-color: red;
-    float: left;
+    
 }
 .fcontainer{
-    border: 2px dashed black;
+    border: 2px solid black;
+}
+i{
+    margin: 5px;
+    font-size: 20px;
 }
 </style>

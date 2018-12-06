@@ -4,7 +4,6 @@
 
         <div class="home">
         <div v-bind="Profile()" class="MainUser">
-
             <h1 class="wel">
                  Sick Fit {{state.MainUser[0].name}}  
             </h1>
@@ -15,15 +14,23 @@
             </h3> 
             <br>
             <h3>
-                 Burned Calories : {{state.MainUser[0].Bcal}}  
+                 Height : {{state.MainUser[0].height}}  
             </h3> 
             <br>
             <h3>
-                Calorie Intake : {{state.MainUser[0].Ical}}  
+                 Weight : {{state.MainUser[0].weight}}  
             </h3> 
             <br>
             <h3>
-                 Caloric Deficit : {{state.MainUser[0].calDef}}  
+                 Burned Calories : {{state.MainUser[0].calB}}  
+            </h3> 
+            <br>
+            <h3>
+                Calorie Intake : {{state.MainUser[0].calI}}  
+            </h3> 
+            <br>
+            <h3>
+                 Caloric Deficit : {{state.MainUser[0].calD}}  
             </h3> 
             <br>
             <h3>
@@ -31,9 +38,12 @@
             </h3> 
             <br>
             <h3>
-                Workouts Completed : {{state.MainUser[0].workDone.length}} 
+               Last Workouts Completed : {{state.MainUser[0].workDone[index]}} 
             <br>
-           
+            </h3>
+            <br>
+            <h3>
+                Workouts Completed : {{state.MainUser[0].workDone.length}} 
             </h3>
             </div>
 
@@ -54,27 +64,27 @@
         <div class="Workout">
             <h1 class="work">Workouts</h1>
             <button @click.prevent="addWorkout1()" class="btn">
-                {{state.workouts[0]}}
+               0.  {{state.workouts[0]}}
             </button>
             <br>
             <br>
             <button @click.prevent="addWorkout2()" class="btn">
-                {{state.workouts[1]}}
+               1.  {{state.workouts[1]}}
             </button>
             <br>
             <br>
             <button @click.prevent="addWorkout3()" class="btn">
-                {{state.workouts[2]}}
+               2.  {{state.workouts[2]}}
             </button>
             <br>
             <br>
             <button @click.prevent="addWorkout4()" class="btn">
-                {{state.workouts[3]}}
+               3.  {{state.workouts[3]}}
             </button>
             <br>
             <br>
             <button @click.prevent="addWorkout5()" class="btn">
-                {{state.workouts[4]}}
+                4.  {{state.workouts[4]}}
             </button>
         </div>
 
@@ -85,21 +95,23 @@
                 v-model="food"
                 placeholder="Food" />
             <br>
-            <button @click.prevent="caloricIntake()" type="submit">
+            <button @click.prevent="calIntake()" type="submit">
                 Submit
             </button>
-
+           
         </div>
+            
+        
 
         <div class="idFriend">
-            <h1 class="addId"> Add Friend Id</h1>
+            <h1 class="addId"> Add WorkOut</h1>
             <input 
                 type="number"
-                v-model="findId"
-                placeholder="Find Friend with Id" >
+                v-model="workId"
+                placeholder="Add Workout Number" >
                 <br>
-                <button class="btnn" @click.prevent="addUserId()" type="submit">
-                    FindFriend
+                <button class="btnn" @click.prevent="addWorkoutId()" type="submit">
+                    Add Workout
                 </button>   
         </div>
 
@@ -111,7 +123,7 @@
                 placeholder="Find Friend with Name" >
                 <br>
                 <button @click.prevent="addFriendName()" type="submit">
-                    Find Friend
+                    Add Friend
                 </button>   
         </div>
 
@@ -145,9 +157,10 @@ export default {
                
                 
             },
-            food:'',
-            findId:0,
+            food: '',
             findName:'',
+            workId: 0,
+            index: 0
             
         }
         
@@ -173,39 +186,17 @@ export default {
             this.Profile()
             this.refresh()
         },
-        addUserId(){
-            api.findFriend(this.findId)
+        addWorkoutId(){
+            api.workDone(this.workId)
+            this.index++
+            this.refresh()
+        },
+        
+        calIntake(){
+            api.calIntake(this.food)
             this.Profile()
             this.refresh()
-        },
-        addWorkout1(){
-            api.workDone(0)
-            this.burned()
-        }, 
-        addWorkout2(){
-            api.workDone(1)
-            this.burned()
-        },
-        addWorkout3(){
-            api.workDone(2)
-            this.burned()
-        }, 
-        addWorkout4(){
-            api.workDone(3)
-            this.burned()
-        },
-        addWorkout5(){
-            api.workDone(4)
-            this.burned()
-        },
-        burned (){
-            api.calBurn()
-            this.refresh()
-        },
-        caloricIntake(){
-            api.intake(this.food)
-            this.calDef()
-            this.refresh()
+            
         },
         calDef(){
             api.deficit()
@@ -227,10 +218,8 @@ export default {
     grid-template-areas: 
     ' main  main  main'
     '. logo .'
-    'workout intake intake'
-    'name name Id'
-    
-    
+    'workout intake name'
+    'Id Id Id'
     
 }
 .profile{  

@@ -17,6 +17,19 @@
             placeholder="age" />
         <br>
         <br>
+        <input 
+            type="number"
+            v-model="height"
+            placeholder="height" />
+        <br>
+        <br>
+        <input
+            type= "number"
+            v-model="weight"
+            placeholder="weight" />
+        <br>
+        <br>
+
         <button  @click.prevent ="login()" >
             Submit
         </button>
@@ -43,7 +56,7 @@
 
     <div class="container-3">
         <h1 class="inv"> All Users</h1>
-        <div v-for="p in state.filterUser" >
+        <div v-for="p in state.users" >
             <h2>
             <i> {{p.name}} {{p.age}} </i>
             </h2> 
@@ -87,8 +100,7 @@ export default {
         return{
             state:{
                 MainUser : [],
-                users : [],
-                filterUser : [],
+                users : []
                 
             },
            isActive: true,
@@ -105,8 +117,7 @@ export default {
             .then(x => this.state = x)
         },
         login(){
-            api.Login(this.name, this.age)
-
+            api.Login(this.name, this.age, this.height, this.weight)
             this.refresh()
         },
         profile(){
