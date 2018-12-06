@@ -35,7 +35,7 @@
         </div>
 
        <div class="container-3">
-             <h1> {{state.MainUser[0].name}}'s Workout History </h1>
+             <h1> {{state.MainUser[0].name}}'S Workout History </h1>
             <div class="container-4">
                 <h4>
                     <i v-for="p in state.MainUser[0].workDone" :key="p.text" >
