@@ -2,7 +2,7 @@
     <div class= "about">
         <h1> Friends </h1>
 
-        <div v-bind="Profile()" class="Friends">
+        <div class="Friends">
             <div class="List">
                 <h1>Friends Info</h1>
                 <div v-for="p in state.MainUser[0].friends">
@@ -87,10 +87,7 @@ export default {
             api.GetState()
             .then(x => this.state = x)
         },
-        Profile(){
-            api.Profile()
-            this.refresh
-        },
+        
         
     }
 }

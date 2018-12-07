@@ -7,28 +7,16 @@ export function GetState(){
 export function Login(name , age , height , weight){
     return myFetch(api_root+ '/users', {name, age, height, weight})
 }
-export function Profile(){
-    return myFetch(api_root+ '/profile',)
-}
 export function workDone(workId){
     return myFetch(api_root+`/Workout/${workId}`)
-}
-export function calBurn(){
-    return myFetch(api_root+"/caloriesBurned",)
 }
 export function calIntake(food){
     return myFetch(api_root+`/calIntake/${food}`)
 }
-export function deficit(){
-    return myFetch(api_root+"/caloricDeficit",)
-}
 export function addName(name){
     return myFetch(api_root+`/addFriend/${name}`)
 }
-export function getFriends(id){
-    return myFetch(api_root+`/friend/${id}`,)
 
-}
 function myFetch(url = ``, data = null) {
     let options = {
           cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

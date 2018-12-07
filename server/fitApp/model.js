@@ -48,6 +48,7 @@ class User {
         this.calD = 0;
         this.intake = [];
         this.workDone = [];
+        this.ProPic = null;
     }
     addFriend(User){
         this.friends.push(User);

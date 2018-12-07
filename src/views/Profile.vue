@@ -3,7 +3,7 @@
         <h1 class="profile">Profile</h1>
 
         <div class="home">
-        <div v-bind="Profile()" class="MainUser">
+        <div class="MainUser">
             <h1 class="wel">
                  Sick Fit {{state.MainUser[0].name}}  
             </h1>
@@ -100,8 +100,6 @@
             </button>
            
         </div>
-            
-        
 
         <div class="idFriend">
             <h1 class="addId"> Add WorkOut</h1>
@@ -176,14 +174,9 @@ export default {
             api.GetState()
             .then(x => this.state = x)
         },
-        Profile(){
-            api.Profile()
-            this.calDef()
-            this.refresh
-        },
         addFriendName(){
             api.addName(this.findName)
-            this.Profile()
+
             this.refresh()
         },
         addWorkoutId(){
@@ -194,13 +187,9 @@ export default {
         
         calIntake(){
             api.calIntake(this.food)
-            this.Profile()
+
             this.refresh()
             
-        },
-        calDef(){
-            api.deficit()
-            this.refresh()
         },
         friendsList(){
             api.getFriends()

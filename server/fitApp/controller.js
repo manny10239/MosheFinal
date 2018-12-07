@@ -49,6 +49,12 @@ app.get('/calIntake/:food', (req, res) => {
     res.send(main);
 });
 
+//set MainUser Profile picture
+app.post('/ProfilePicture', (req, res) =>{
+    const main = fitapp.getMainUser();
+    main.ProPic = req.body.ProPic;
+    res.send(main);
+});
 console.log("Controller is running with no erros");
 
 module.exports = app;

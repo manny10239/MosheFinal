@@ -34,7 +34,7 @@
             Submit
         </button>
         <br>
-       
+
     </form>
 
     <div class="container-2">
@@ -43,7 +43,9 @@
             <h2>
             <i> Welcome {{p.name}} 
                 <br>
-                Age: {{p.age}} <br> ID:{{p.id}}</i>
+                Age: {{p.age}} <br> 
+                ID:{{p.id}} <br>
+                Weight: {{p.weight}} <br> </i>
             </h2> 
          </div>
 
@@ -104,6 +106,7 @@ export default {
                 
             },
            isActive: true,
+           ProPic: null
         }
     },
     created(){
