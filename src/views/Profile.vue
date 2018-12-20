@@ -118,11 +118,14 @@
             <input 
                 type="text"
                 v-model="findName"
-                placeholder="Find Friend with Name" >
+                placeholder="Find Friend with Name" 
+                >
                 <br>
                 <button @click.prevent="addFriendName()" type="submit">
                     Add Friend
-                </button>   
+                </button> 
+
+        
         </div>
 
         <div class="container-5">
@@ -176,7 +179,6 @@ export default {
         },
         addFriendName(){
             api.addName(this.findName)
-
             this.refresh()
         },
         addWorkoutId(){
@@ -184,16 +186,10 @@ export default {
             this.index++
             this.refresh()
         },
-        
         calIntake(){
             api.calIntake(this.food)
-
             this.refresh()
             
-        },
-        friendsList(){
-            api.getFriends()
-            this.fresh()
         }
     },
 }

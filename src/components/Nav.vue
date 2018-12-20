@@ -4,6 +4,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/about">Friends</a></li>
             <li><a href="/profile">Profile</a></li>
+            <li><a href="/autoComplete">Auto Complete</a></li>
         </ul>
     </nav>
 </template>

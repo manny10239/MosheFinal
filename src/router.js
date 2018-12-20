@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Profile from './views/Profile.vue'
+import AutoComplete from './views/AutoComplete.vue'
 
 Vue.use(Router)
 
@@ -25,9 +26,9 @@ export default new Router({
       component: Profile
     },
     {
-      path: '/profile',
-      name: 'Profile',
-      component:Profile
+      path: '/autoComplete',
+      name: 'autoComplete',
+      component: AutoComplete
     }
   ]
 })

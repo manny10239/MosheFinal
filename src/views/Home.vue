@@ -30,11 +30,12 @@
         <br>
         <br>
 
+        
         <button  @click.prevent ="login()" >
             Submit
         </button>
         <br>
-
+        
     </form>
 
     <div class="container-2">
@@ -89,7 +90,7 @@
     </div>
 
     </div>
-
+    
     </div>
     
 </template>
@@ -121,10 +122,6 @@ export default {
         },
         login(){
             api.Login(this.name, this.age, this.height, this.weight)
-            this.refresh()
-        },
-        profile(){
-            api.Profile()
             this.refresh()
         }
     },
